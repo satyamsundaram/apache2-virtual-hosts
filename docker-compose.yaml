@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  apache:
+    image: httpd:latest
+    container_name: my-apache-app
+    ports:
+    - '80:80'
+    - '443:443'
+    volumes:
+    - ./website:/usr/local/apache2/htdocs/website
+    - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
+    - ./sites/a.com:/usr/local/apache2/htdocs/a.com
+    - ./sites/b.com:/usr/local/apache2/htdocs/b.com
+    - ./key-a.key:/etc/ssl/private/key-a.key
+    - ./cert-a.crt:/etc/ssl/certs/cert-a.crt
+    - ./key-b.key:/etc/ssl/private/key-b.key
+    - ./cert-b.crt:/etc/ssl/certs/cert-b.crt
